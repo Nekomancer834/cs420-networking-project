@@ -27,7 +27,7 @@ public class Network extends Game{
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		metalUI = new Skin(Gdx.files.internal("Metal_Ui_Skin/metalui/metal-ui.json"));
+		metalUI = new Skin(Gdx.files.internal("metalui/metal-ui.json")); //idk why but having the outer folder was an issue for linux intellij(?)
 
 		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/OpenSans-Regular.ttf"));
 		FreeTypeFontParameter parameter = new FreeTypeFontParameter();
@@ -47,7 +47,8 @@ public class Network extends Game{
 		mainBackground = new Texture(Gdx.files.internal("Backgrounds/backgroundTexture169.jpg"));
 
 
-		viewport = new FitViewport(1920,1080);
+		//viewport = new FitViewport(1280,720);
+		viewport = new FitViewport(640,480);
 		this.setScreen(new MainScreen(this));
 	}
 
