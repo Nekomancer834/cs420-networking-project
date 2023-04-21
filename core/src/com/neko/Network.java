@@ -5,24 +5,49 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.*;
+import com.badlogic.gdx.graphics.g2d.freetype.*;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 
 public class Network extends Game{
 	SpriteBatch batch;
-	BitmapFont font;
+	BitmapFont font1;
+	BitmapFont font2;
+	BitmapFont font3;
+	Label.LabelStyle cstmFnt1;
+	Label.LabelStyle cstmFnt2;
+	Label.LabelStyle cstmFnt3;
 	Viewport viewport;
 	Texture mainBackground;
+	Skin metalUI;
+
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		font = new BitmapFont(); // use libGDX's default Arial font
+		metalUI = new Skin(Gdx.files.internal("Metal_Ui_Skin/metalui/metal-ui.json"));
+
+		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/OpenSans-Regular.ttf"));
+		FreeTypeFontParameter parameter = new FreeTypeFontParameter();
+		parameter.size = 24;
+		font1 = generator.generateFont(parameter);
+		parameter.size = 40;
+		font2 = generator.generateFont(parameter);
+		parameter.size = 70;
+		font3 = generator.generateFont(parameter);
+
+		cstmFnt1 = new Label.LabelStyle(font1, Color.BLACK);
+		cstmFnt2 = new Label.LabelStyle(font2, Color.BLACK);
+		cstmFnt3 = new Label.LabelStyle(font3, Color.BLACK);
+		generator.dispose(); // don't forget to dispose to avoid memory leaks!
 
 
 		mainBackground = new Texture(Gdx.files.internal("Backgrounds/backgroundTexture169.jpg"));
 
 
-		viewport = new FitViewport(1600,900);
+		viewport = new FitViewport(1920,1080);
 		this.setScreen(new MainScreen(this));
 	}
 
@@ -32,7 +57,9 @@ public class Network extends Game{
 
 	public void dispose () {
 		batch.dispose();
-		font.dispose();
+		font1.dispose();
+		font2.dispose();
+		font3.dispose();
 
 	}
 }
