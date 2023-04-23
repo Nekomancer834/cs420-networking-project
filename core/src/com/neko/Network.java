@@ -21,6 +21,7 @@ public class Network extends Game{
 	Label.LabelStyle cstmFnt3;
 	Viewport viewport;
 	Texture mainBackground;
+	Texture icon;
 	Skin metalUI;
 
 	
@@ -45,10 +46,11 @@ public class Network extends Game{
 
 
 		mainBackground = new Texture(Gdx.files.internal("Backgrounds/backgroundTexture169.jpg"));
+		icon = new Texture(Gdx.files.internal("img.png"));
 
 
 		//viewport = new FitViewport(1280,720);
-		viewport = new FitViewport(640,480);
+		viewport = new FitViewport(850,450);
 		this.setScreen(new MainScreen(this));
 	}
 
