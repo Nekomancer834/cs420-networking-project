@@ -227,13 +227,13 @@ public class MainScreen implements Screen {
         if(startFlag){
             i++;
             displayTime+= dDT;
-            if(displayTime>totalTime){
+            if(displayTime>totalTime){ //if time elapsed passes total time then stop loop
                 displayTime=totalTime;
                 startFlag=false;
             }
-            boxX+=((frameWidth+boxWidth)/(totalTime/dDT));
+            boxX+=((frameWidth+boxWidth)/(totalTime/dDT)); // move the red box
 
-            timerLabel.setText(String.format("%.2f ms", displayTime*1000));
+            timerLabel.setText(String.format("%.2f ms", displayTime*1000)); // output the current (virtual) time elapsed
         }
 
         //add actors
